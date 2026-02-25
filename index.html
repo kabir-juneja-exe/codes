@@ -3,63 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Block with Copy</title>
+    <title>Code Block with Copy Button</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f4; }
-
-        /* Container needs position: relative for the button to sit inside */
-        .code-container {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            position: relative; 
-            overflow-x: auto;
+        /* Base Page Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px;
+            background-color: #f0f2f5;
         }
 
-        code { font-family: 'Courier New', Courier, monospace; line-height: 1.5; }
+        /* Container for the Code Block */
+        .code-wrapper {
+            position: relative; /* Essential for positioning the button */
+            background-color: #000000; /* Black background */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-        /* Style for the Copy Button */
-        .copy-btn {
+        /* Code Styling */
+        code {
+            display: block;
+            color: #ffffff; /* White text for contrast */
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            white-space: pre-wrap; /* Keeps formatting and wraps text */
+        }
+
+        /* Copy Button Styling */
+        .copy-button {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #444;
+            top: 12px;
+            right: 12px;
+            background-color: #333;
             color: #fff;
-            border: none;
-            padding: 5px 10px;
+            border: 1px solid #555;
+            padding: 6px 12px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
         }
 
-        .copy-btn:hover { background: #666; }
+        .copy-button:hover {
+            background-color: #555;
+        }
+
+        /* Styling for the "Copied!" state */
+        .copy-button.success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
     </style>
 </head>
 <body>
 
-    <h2>My Code Block</h2>
-    
-    <div class="code-container">
-        <button class="copy-btn" onclick="copyCode()">Copy</button>
-        <pre><code id="myCode">// This is your code text
-function greetUser() {
-    console.log("Hello, World!");
-}
-
-greetUser();</code></pre>
+    <div class="code-wrapper">
+        <!-- The Copy Button -->
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+        
+        <!-- The Code Block -->
+        <code id="code-content">YOUR CODE HERE</code>
     </div>
 
     <script>
-        function copyCode() {
-            // Get the text from the code element
-            const codeText = document.getElementById('myCode').innerText;
-            
-            // Use the Clipboard API to copy
-            navigator.clipboard.writeText(codeText).then(() => {
-                const btn = document.querySelector('.copy-btn');
-                btn.innerText = "Copied!";
-                setTimeout(() => btn.innerText = "Copy", 2000); // Reset after 2s
+        function copyCode(button) {
+            // Select the text inside the code block
+            const textToCopy = document.getElementById('code-content').innerText;
+
+            // Use the modern Clipboard API
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Visual feedback: Change button text and color
+                button.innerText = "Copied!";
+                button.classList.add('success');
+
+                // Reset the button after 2 seconds
+                setTimeout(() => {
+                    button.innerText = "Copy";
+                    button.classList.remove('success');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
             });
         }
     </script>
