@@ -3,68 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Price Checker</title>
+    <title>Bitcoin Price Checker Code</title>
     <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --code-bg: #000000;
+            --text-color: #ffffff;
+            --glow-color: rgba(255, 255, 255, 0.2);
+            --border-color: #ffffff;
+        }
+
         body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
             padding: 40px;
-            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        h2 {
-            text-align: center;
-            color: #333;
+        /* Top Left Name */
+        .brand {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
 
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 60px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        /* Code Block Styling */
         .code-wrapper {
             position: relative;
-            background-color: #000000;
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 30px 20px 20px 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            max-width: 800px;
-            margin: 20px auto;
+            box-shadow: 0 0 15px var(--glow-color);
+            overflow: hidden;
         }
 
-        code {
-            display: block;
-            color: #ffffff;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            white-space: pre; /* Preserves the code formatting */
+        pre {
+            margin: 0;
+            padding: 20px;
             overflow-x: auto;
-            line-height: 1.4;
+            color: #d1d1d1;
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
 
-        .copy-button {
+        /* Copy Button */
+        .copy-btn {
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: #444;
-            color: #fff;
-            border: 1px solid #666;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            color: white;
             padding: 5px 12px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.75rem;
-            transition: all 0.2s;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
         }
 
-        .copy-button:hover { background-color: #666; }
-        
-        .copy-button.success {
-            background-color: #28a745;
-            border-color: #28a745;
+        .copy-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
 <body>
 
-    <h2>Bitcoin Price Checker</h2>
+    <div class="brand">Kabir.exe</div>
 
-    <div class="code-wrapper">
-        <button class="copy-button" onclick="copyCode(this)">Copy</button>
-        <code id="btc-code">$nomention
+    <div class="container">
+        <h1>Bitcoin Price Checker</h1>
+        
+        <div class="code-wrapper">
+            <button class="copy-btn" onclick="copyCode()">Copy</button>
+            <pre id="codeBlock">$nomention
 
 $argsCheck[1;Usage: `.btc {currency}`]
 
@@ -94,18 +130,18 @@ $addField[<:1000530047:1470489714543825059> Highest (24h);**$var[$]**$numberSepa
 $addField[<:1000530048:1470489711964459080> Lowest (24h);**$var[$]**$numberSeparator[$round[$httpResult[0;low_24h]]]]
 $color[ffffff]
 $footer[Source www.coingecko.com]
-$footerIcon[https://cdn.discordapp.com/attachments/1446064234877157509/1446070067681820693/CoinGecko.png?ex=6932a532&is=693153b2&hm=49a1a9de0414b87a164ca46d87c70a0f3e8f585143581d52deeef294234dfdb1&]</code>
+$footerIcon[https://cdn.discordapp.com/attachments/1446064234877157509/1446070067681820693/CoinGecko.png?ex=6932a532&is=693153b2&hm=49a1a9de0414b87a164ca46d87c70a0f3e8f585143581d52deeef294234dfdb1&]</pre>
+        </div>
     </div>
 
     <script>
-        function copyCode(button) {
-            const textToCopy = document.getElementById('btc-code').innerText;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                button.innerText = "Copied!";
-                button.classList.add('success');
+        function copyCode() {
+            const code = document.getElementById('codeBlock').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.innerText = 'Copied!';
                 setTimeout(() => {
-                    button.innerText = "Copy";
-                    button.classList.remove('success');
+                    btn.innerText = 'Copy';
                 }, 2000);
             });
         }
@@ -113,3 +149,4 @@ $footerIcon[https://cdn.discordapp.com/attachments/1446064234877157509/144607006
 
 </body>
 </html>
+    
