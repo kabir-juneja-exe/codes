@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile | Sha?dow</title>
+    <title>Home | Shadow</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* General Page Styling */
@@ -95,10 +95,10 @@
         }
         .overlay.active { display: block; }
 
-        /* --- CONTENT --- */
+        /* --- CONTENT SECTION --- */
         .container {
-            margin-top: 120px;
-            max-width: 600px;
+            margin-top: 100px;
+            max-width: 800px; /* Increased for desktop profile image */
             width: 90%;
             text-align: center;
         }
@@ -106,41 +106,27 @@
         h1 { margin-bottom: 5px; font-size: 2.5rem; }
         .description { color: #bbb; margin-bottom: 30px; font-size: 1.1rem; }
 
-        /* Glowing Discord Card */
-        .discord-card {
+        /* --- UPDATED PROFILE IMAGE BOX --- */
+        .profile-container {
             position: relative;
-            background-color: #000000;
-            border: 1px solid #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            overflow: hidden;
-            text-align: left;
-        }
-
-        .banner {
             width: 100%;
-            height: 160px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .card-content {
-            padding: 0 20px 20px 20px;
-            margin-top: -45px;
-        }
-
-        .profile-img-large {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 6px solid #000;
+            max-width: 600px; /* Adjust based on preference */
+            margin: 0 auto;
+            border: 2px solid #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
             background-color: #000;
         }
 
-        .display-name { font-size: 1.5rem; font-weight: bold; margin-top: 10px; }
-        .user-tag { color: #bbb; font-size: 1rem; margin-top: 2px; }
+        .profile-img-custom {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
 
-        /* --- FOOTER ICONS --- */
+        /* --- FOOTER SOCIALS --- */
         .footer-socials {
             margin-top: 40px;
             display: flex;
@@ -159,26 +145,23 @@
             align-items: center;
         }
 
-        .tilt-icon { transform: rotate(-35deg); }
-
         .social-icon:hover {
             color: white;
             transform: scale(1.1);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        .social-icon:hover .tilt-icon { transform: rotate(-35deg) scale(1.1); }
+        .tilt-icon { transform: rotate(-35deg); }
 
-        /* --- COPYRIGHT SECTION --- */
+        /* --- COPYRIGHT --- */
         .copyright {
-            margin-top: 50px;
+            margin-top: 40px;
             padding-bottom: 30px;
-            color: #bbb; /* Matches description color */
+            color: #bbb;
             font-size: 0.9rem;
             opacity: 0.8;
         }
 
-        /* Toast notification */
         #toast {
             visibility: hidden;
             min-width: 200px;
@@ -212,7 +195,7 @@
     </div>
 
     <div class="sidebar" id="sidebar">
-        <a href="index.html">Home</a>
+        <a href="home.html">Home</a>
         <a href="codes.html">Other Codes</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
@@ -221,27 +204,20 @@
     <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
     <div class="container">
-        <h1>Hello I am Sha?dow</h1>
+        <h1>Hello I am Shadow</h1>
         <p class="description">My name is Kabir I am a developer and designer.</p>
 
-        <div class="discord-card">
-            <img src="https://cdn.discordapp.com/banners/1301883723247124521/a_b91b0a63867f80ab6995a61b45642af4.gif" class="banner" alt="Banner">
-            <div class="card-content">
-                <img src="https://cdn.discordapp.com/avatars/1301883723247124521/4793f5066c0ee12d60df0414b57fe1ee.png?size=1024" class="profile-img-large" alt="Profile">
-                <div class="display-name">Sha?dow</div>
-                <div class="user-tag">kabir.exe</div>
-            </div>
+        <div class="profile-container">
+            <img src="https://example.com/your-uploaded-profile-image.png" class="profile-img-custom" alt="Discord Profile">
         </div>
 
         <div class="footer-socials">
             <a href="https://discord.gg/void" target="_blank" class="social-icon">
                 <i class="fa-brands fa-discord"></i>
             </a>
-            
             <a onclick="copyEmail()" class="social-icon">
                 <i class="fa-solid fa-envelope"></i>
             </a>
-
             <a href="https://guns.lol/kabirjuneja" target="_blank" class="social-icon">
                 <i class="fa-solid fa-gun tilt-icon"></i>
             </a>
