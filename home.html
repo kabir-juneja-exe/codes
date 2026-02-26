@@ -160,7 +160,7 @@
         }
 
         .social-icon {
-            color: #bbb;
+            color: #bbb; /* Description color as requested */
             font-size: 2.2rem;
             text-decoration: none;
             transition: 0.3s;
@@ -172,18 +172,6 @@
         .social-icon:hover {
             color: white;
             transform: scale(1.1);
-        }
-
-        /* Official-style Guns.lol SVG styling */
-        .guns-logo-svg {
-            width: 38px;
-            height: 38px;
-            fill: #bbb; /* Matches description color */
-            transition: 0.3s;
-        }
-
-        .social-icon:hover .guns-logo-svg {
-            fill: white;
         }
 
         /* Toast notification */
@@ -242,18 +230,16 @@
         </div>
 
         <div class="footer-socials">
-            <a href="https://discord.gg/void" target="_blank" class="social-icon">
+            <a href="https://discord.gg/void" target="_blank" class="social-icon" title="Discord">
                 <i class="fa-brands fa-discord"></i>
             </a>
             
-            <a onclick="copyEmail()" class="social-icon">
+            <a onclick="copyEmail()" class="social-icon" title="Copy Email">
                 <i class="fa-solid fa-envelope"></i>
             </a>
 
-            <a href="https://guns.lol/kabirjuneja" target="_blank" class="social-icon">
-                <svg class="guns-logo-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm-1.5 4v2h3v1h-3v2h4v2h-6V6h2z"/>
-                </svg>
+            <a href="https://guns.lol/kabirjuneja" target="_blank" class="social-icon" title="Guns.lol">
+                <i class="fa-solid fa-gun"></i>
             </a>
         </div>
     </div>
