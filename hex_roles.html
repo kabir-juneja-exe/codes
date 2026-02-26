@@ -215,15 +215,23 @@
             <button class="copy-btn" onclick="copyCode()">Copy</button>
             <div class="code-block">
 <pre id="code-content">$nomention
-$if[$getUserVar[HEX]==0]
-$title[Custom Hex Role]
-$description[Click the button below to create your own custom colored role!]
-$addButton[no;rolebutton;Create Role;Primary;false]
-$else
-$title[Custom Hex Role]
-$description[You already have a custom role created!]
-$endif
-$color[#ffffff]</pre>
+$deletecommand
+$var[dot;<:dots:1474755436149346510>]
+$var[star;<a:rollingstar:1474756106696917174>]
+$addContainer[rolemenu;#000000]
+$addTextDisplay[## Auto Role System;rolemenu]
+$addSeparator[true;Small;rolemenu]
+$addTextDisplay[### $var[star] How to use
+$var[dot] Get the HEX colour of your Role.
+$var[dot] Click the button below.
+$var[dot] Enter the HEX code.
+$var[dot] You will get the role!;rolemenu]
+$addSeparator[true;Small;rolemenu]
+$addActionRow[rolebuttonmenu;rolemenu]
+$addButtonCV2[rolebutton;Click Me;success;false;$var[star];rolebuttonmenu]
+$addMediaGallery[roleimg;rolemenu]
+$addMediaGalleryItem[https://cdn.discordapp.com/attachments/1424703458321367201/1475101167871721542/943c9fa24045aaee2eda79cf43dab92a.gif?ex=699c4284&is=699af104&hm=8ce5517a1ba017eebd137653f4db108bff7d48667dd9090b3e7201db2839c472&;;;roleimg]
+$addTextDisplay[-# Enjoy!;rolemenu]</pre>
             </div>
         </div>
     </div>
@@ -236,32 +244,54 @@ $color[#ffffff]</pre>
 
         const codes = {
             main: `$nomention
-$if[$getUserVar[HEX]==0]
-$title[Custom Hex Role]
-$description[Click the button below to create your own custom colored role!]
-$addButton[no;rolebutton;Create Role;Primary;false]
-$else
-$title[Custom Hex Role]
-$description[You already have a custom role created!]
-$endif
-$color[#ffffff]`,
+$deletecommand
+$var[dot;<:dots:1474755436149346510>]
+$var[star;<a:rollingstar:1474756106696917174>]
+$addContainer[rolemenu;#000000]
+$addTextDisplay[## Auto Role System;rolemenu]
+$addSeparator[true;Small;rolemenu]
+$addTextDisplay[### $var[star] How to use
+$var[dot] Get the HEX colour of your Role.
+$var[dot] Click the button below.
+$var[dot] Enter the HEX code.
+$var[dot] You will get the role!;rolemenu]
+$addSeparator[true;Small;rolemenu]
+$addActionRow[rolebuttonmenu;rolemenu]
+$addButtonCV2[rolebutton;Click Me;success;false;$var[star];rolebuttonmenu]
+$addMediaGallery[roleimg;rolemenu]
+$addMediaGalleryItem[https://cdn.discordapp.com/attachments/1424703458321367201/1475101167871721542/943c9fa24045aaee2eda79cf43dab92a.gif?ex=699c4284&is=699af104&hm=8ce5517a1ba017eebd137653f4db108bff7d48667dd9090b3e7201db2839c472&;;;roleimg]
+$addTextDisplay[-# Enjoy!;rolemenu]`,
             
             button: `$nomention
-$onInteraction[rolebutton]
-$showModal[rolemodal;Custom Hex Role;Enter your HEX code (e.g. 0c0c0c)]
-$addInput[hex;Hex Color;0c0c0c;true;6;6]`,
+$ephemeral
+
+$if[$getUserVar[HEX;$authorID]==1]
+
+$addContainer[error;#FF0000]
+$addTextDisplay[Sorry <@$authorID> you already have a role to remove it go to <#1457329781078102202>;error]
+
+$elseif[$getUserVar[HEX;$authorID]==0]
+
+$newModal[rolemodal;Hex Code]
+$addTextInput[HexCode;short;Hex;6;6;true;;Enter without #]
+
+$endif`,
 
             modal: `$nomention
-$onInteraction[rolemodal]
-$var[hex;$input[hex]]
-$if[$roleExists[$var[hex]]==false]
-$createRole[$var[hex];$var[hex]]
+$suppressErrors
+$if[$findRole[#$toUppercase[$input[HexCode]]]==]
+$createRole[#$toUppercase[$input[HexCode]];#$input[HexCode];no;no]
 $endif
-$giveRole[$authorID;$roleID[$var[hex]]]
-$setUserVar[HEX;1]
-$title[Role Created!]
-$description[You have been given the role with HEX: #$var[hex]]
-$color[$var[hex]]`,
+
+$var[role;$findRole[#$toUppercase[$input[HexCode]]]]
+
+$ephemeral
+$addContainer[success;#000000]
+$addTextDisplay[<@$authorID>, Successful Given you the role <@&$var[role]>;success]
+$roleGrant[$authorID;+$var[role]]
+$sendEmbedMessage[1475114837787807948;<@$authorID>, Successful Given you the role <@&$var[role]>;<@$authorID> - <@&$var[role]>]
+$setUserVar[HEX;$sum[$getUserVar[HEX;$authorID];1];$authorID]
+`,
 
             extra: `$nomention 
 $title[HEX System Info]
