@@ -99,7 +99,7 @@
         .main-container {
             margin-top: 100px;
             width: 95%;
-            max-width: 1100px;
+            max-width: 1200px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -107,79 +107,122 @@
 
         .grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            /* Adjusted minmax to force 3 in a line on desktop */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
             width: 100%;
             padding: 20px 0;
         }
 
-        /* --- BLOCK DESIGN (FROM IMAGE) --- */
+        /* --- BLOCK DESIGN --- */
         .snippet-card {
             background-color: #0b0b0b;
             border: 1px solid #ffffff;
-            border-radius: 20px; /* Matching the rounded look of the block in image */
-            padding: 30px;
+            border-radius: 20px;
+            padding: 25px;
             text-align: left;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            min-height: 200px;
-            transition: transform 0.2s ease;
+            justify-content: space-between;
+            min-height: 180px;
+            transition: 0.3s ease;
         }
 
         .snippet-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
         }
 
         .card-title {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
             color: white;
         }
 
         .card-tag {
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: #7289da; /* BDFD / Discord Blueish tag color */
+            gap: 8px;
+            color: #7289da;
             font-family: monospace;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
         }
 
-        /* --- BUTTON DESIGN (EXACTLY LIKE IMAGE) --- */
         .view-btn {
-            background-color: #1a1a1a; /* Darker grey button background from image */
+            background-color: #1a1a1a;
             border: 1px solid #333;
             color: white;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 10px;
             text-align: center;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: 0.2s;
             display: block;
             width: 100%;
             box-sizing: border-box;
         }
 
-        .view-btn:hover {
-            background-color: #252525;
-            border-color: #555;
+        .view-btn:hover { background-color: #252525; border-color: #555; }
+
+        /* --- SOCIAL ICONS FOOTER --- */
+        .footer-socials {
+            margin-top: 40px;
+            display: flex;
+            gap: 35px;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Footer Copyright */
+        .social-icon {
+            color: #bbb;
+            font-size: 2.2rem;
+            text-decoration: none;
+            transition: 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-icon:hover {
+            color: white;
+            transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .tilt-icon { transform: rotate(-35deg); }
+
+        /* --- COPYRIGHT SECTION --- */
         .copyright {
-            margin-top: 50px;
+            margin-top: 40px;
             padding-bottom: 30px;
             color: #bbb;
             font-size: 0.9rem;
             opacity: 0.8;
+            text-align: center;
         }
+
+        #toast {
+            visibility: hidden;
+            min-width: 200px;
+            background-color: white;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 12px;
+            position: fixed;
+            z-index: 2000;
+            bottom: 30px;
+            font-weight: bold;
+        }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
     </style>
 </head>
 <body>
@@ -208,59 +251,89 @@
         <div class="grid-layout">
             
             <div class="snippet-card">
-                <div class="card-title">Bitcoin Tracker</div>
-                <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
-                <a href="bitcoin_price.html" class="view-btn">View Snippet</a>
+                <div>
+                    <div class="card-title">Bitcoin Price Checker</div>
+                    <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
+                </div>
+                <a href="btc.html" class="view-btn">View Snippet</a>
             </div>
 
             <div class="snippet-card">
-                <div class="card-title">Economy System</div>
-                <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
-                <a href="bitcoin_price.html" class="view-btn">View Snippet</a>
+                <div>
+                    <div class="card-title">Giveaway in Container</div>
+                    <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
+                </div>
+                <a href="giveaway.html" class="view-btn">View Snippet</a>
             </div>
 
             <div class="snippet-card">
-                <div class="card-title">Leveling Bot</div>
-                <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
-                <a href="bitcoin_price.html" class="view-btn">View Snippet</a>
+                <div>
+                    <div class="card-title">Hex Role System</div>
+                    <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
+                </div>
+                <a href="hex_roles.html" class="view-btn">View Snippet</a>
             </div>
 
             <div class="snippet-card">
-                <div class="card-title">Moderation AI</div>
-                <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
-                <a href="bitcoin_price.html" class="view-btn">View Snippet</a>
+                <div>
+                    <div class="card-title">Ticket System</div>
+                    <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
+                </div>
+                <a href="tickets.html" class="view-btn">View Snippet</a>
             </div>
 
             <div class="snippet-card">
-                <div class="card-title">Music Player</div>
-                <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
-                <a href="bitcoin_price.html" class="view-btn">View Snippet</a>
+                <div>
+                    <div class="card-title">Button Roles</div>
+                    <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
+                </div>
+                <a href="buttonroles.html" class="view-btn">View Snippet</a>
             </div>
 
             <div class="snippet-card">
-                <div class="card-title">Welcome Logs</div>
-                <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
-                <a href="bitcoin_price.html" class="view-btn">View Snippet</a>
+                <div>
+                    <div class="card-title">Random Neko/Waifu</div>
+                    <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
+                </div>
+                <a href="neko.html" class="view-btn">View Snippet</a>
             </div>
 
             <div class="snippet-card">
-                <div class="card-title">Auto Responder</div>
-                <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
-                <a href="bitcoin_price.html" class="view-btn">View Snippet</a>
+                <div>
+                    <div class="card-title">Hug/Kiss/Kill</div>
+                    <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
+                </div>
+                <a href="hug.html" class="view-btn">View Snippet</a>
             </div>
 
             <div class="snippet-card">
-                <div class="card-title">Reaction Roles</div>
-                <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
-                <a href="bitcoin_price.html" class="view-btn">View Snippet</a>
+                <div>
+                    <div class="card-title">Slap/Cuddle/Pet</div>
+                    <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
+                </div>
+                <a href="slap.html" class="view-btn">View Snippet</a>
             </div>
 
             <div class="snippet-card">
-                <div class="card-title">Ticket System</div>
-                <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
-                <a href="bitcoin_price.html" class="view-btn">View Snippet</a>
+                <div>
+                    <div class="card-title">Welcome Message</div>
+                    <div class="card-tag"><i class="fa-solid fa-code"></i> BDScript 2</div>
+                </div>
+                <a href="welcome.html" class="view-btn">View Snippet</a>
             </div>
 
+        </div>
+
+        <div class="footer-socials">
+            <a href="https://discord.gg/void" target="_blank" class="social-icon">
+                <i class="fa-brands fa-discord"></i>
+            </a>
+            <a onclick="copyEmail()" class="social-icon">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="https://guns.lol/kabirjuneja" target="_blank" class="social-icon">
+                <i class="fa-solid fa-gun tilt-icon"></i>
+            </a>
         </div>
 
         <div class="copyright">
@@ -268,12 +341,22 @@
         </div>
     </div>
 
+    <div id="toast">Email Copied to Clipboard!</div>
+
     <script>
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
         }
+
+        function copyEmail() {
+            const email = "kabir0juneja@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                const toast = document.getElementById("toast");
+                toast.className = "show";
+                setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+            });
+        }
     </script>
 </body>
 </html>
-
