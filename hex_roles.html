@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Price Checker | Kabir.exe</title>
+    <title>HEX Role Creator | Kabir.exe</title>
     <style>
         /* General Page Styling */
         body {
@@ -115,7 +115,8 @@
         }
 
         h1 { margin-bottom: 5px; font-size: 2rem; }
-        .description { color: #bbb; margin-bottom: 20px; font-style: italic; }
+        .description { color: #bbb; margin-bottom: 10px; font-style: italic; }
+        .extra-description { color: #888; margin-bottom: 25px; font-size: 0.95rem; line-height: 1.4; }
 
         .tab-container {
             display: flex;
@@ -197,40 +198,33 @@
 
     <div class="container">
         <h1>Custom HEX Role Code (BDScript 2)</h1>
-        <p class="description">Variable - "HEX" (value = 0) A Container custom HEX color role creater + giver code by "kabir.exe.". Use the main command and click the button enter the HEX code without # like "0c0c0c" and submit you will get the role of that color. One person can only create 1 role. No duplicate roles will be created in this process. To remove the hex of a person remove 1 HEX varible from the user. </p>
+        <p class="description">Variable - "HEX" (value = 0) A Container custom HEX color role creator by "kabir.exe."</p>
+        
+        <p class="extra-description">
+            To remove the hex of a person, simply subtract 1 from the "HEX" variable for that user. 
+            This ensures a clean system where no duplicate roles clog your server list.
+        </p>
 
         <div class="tab-container">
             <button class="tab-btn active" onclick="switchTab('main', this)">Main Code</button>
             <button class="tab-btn" onclick="switchTab('button', this)">$onInteraction[rolebutton]</button>
             <button class="tab-btn" onclick="switchTab('modal', this)">$onInteraction[rolemodal]</button>
+            <button class="tab-btn" onclick="switchTab('extra', this)">Extra</button>
         </div>
 
         <div class="code-container">
             <button class="copy-btn" onclick="copyCode()">Copy</button>
             <div class="code-block">
 <pre id="code-content">$nomention
-$argsCheck[1;Usage: `.btc {currency}`]
-
-$if[$message[1]==inr]$var[$;₹]
-$elseif[$message[1]==usd]$var[$;$]
-$elseif[$message[1]==eur]$var[$;€]
-$elseif[$message[1]==jpy]$var[$;¥]
-$elseif[$message[1]==php]$var[$;₱]
-$elseif[$message[1]==rub]$var[$;₽]
-$elseif[$message[1]==pkr]$var[$;Rs]
-$elseif[$message[1]==sgd]$var[$;S$]
-
+$if[$getUserVar[HEX]==0]
+$title[Custom Hex Role]
+$description[Click the button below to create your own custom colored role!]
+$addButton[no;rolebutton;Create Role;Primary;false]
+$else
+$title[Custom Hex Role]
+$description[You already have a custom role created!]
 $endif
-
-$httpGet[https://api.coingecko.com/api/v3/coins/markets?vs_currency=$message[1]]
-$author[Bitcoin (BTC) price in $toUppercase[$message[1]]]
-$authorIcon[https://cdn.discordapp.com/attachments/1446064234877157509/1446064286605512714/2048px-Bitcoin.svg.png]
-$addField[💲 Price;**$var[$]**$numberSeparator[$round[$httpResult[0;current_price]]]]
-$addField[📈 Highest (24h);**$var[$]**$numberSeparator[$round[$httpResult[0;high_24h]]]]
-$addField[📉 Lowest (24h);**$var[$]**$numberSeparator[$round[$httpResult[0;low_24h]]]]
-$color[ffffff]
-$footer[Source www.coingecko.com]
-$footerIcon[https://cdn.discordapp.com/attachments/1446064234877157509/1446070067681820693/CoinGecko.png]</pre>
+$color[#ffffff]</pre>
             </div>
         </div>
     </div>
@@ -243,59 +237,36 @@ $footerIcon[https://cdn.discordapp.com/attachments/1446064234877157509/144607006
 
         const codes = {
             main: `$nomention
-$argsCheck[1;Usage: \`.btc {currency}\`]
-
-$if[$message[1]==inr]$var[$;₹]
-$elseif[$message[1]==usd]$var[$;$]
-$elseif[$message[1]==eur]$var[$;€]
-$elseif[$message[1]==jpy]$var[$;¥]
-$elseif[$message[1]==php]$var[$;₱]
-$elseif[$message[1]==rub]$var[$;₽]
-$elseif[$message[1]==pkr]$var[$;Rs]
-$elseif[$message[1]==sgd]$var[$;S$]
-
+$if[$getUserVar[HEX]==0]
+$title[Custom Hex Role]
+$description[Click the button below to create your own custom colored role!]
+$addButton[no;rolebutton;Create Role;Primary;false]
+$else
+$title[Custom Hex Role]
+$description[You already have a custom role created!]
 $endif
-
-$httpGet[https://api.coingecko.com/api/v3/coins/markets?vs_currency=$message[1]]
-$author[Bitcoin (BTC) price in $toUppercase[$message[1]]]
-$authorIcon[https://cdn.discordapp.com/attachments/1446064234877157509/1446064286605512714/2048px-Bitcoin.svg.png]
-$addField[<:1000530819:1470489716905345024> Price;**$var[$]**$numberSeparator[$round[$httpResult[0;current_price]]]]
-$addField[<:1000530047:1470489714543825059> Highest (24h);**$var[$]**$numberSeparator[$round[$httpResult[0;high_24h]]]]
-$addField[<:1000530048:1470489711964459080> Lowest (24h);**$var[$]**$numberSeparator[$round[$httpResult[0;low_24h]]]]
-$color[ffffff]
-$footer[Source www.coingecko.com]
-$footerIcon[https://cdn.discordapp.com/attachments/1446064234877157509/1446070067681820693/CoinGecko.png]`,
+$color[#ffffff]`,
             
             button: `$nomention
-$argsCheck[1;Usage: \`.btc {currency}\`]
+$onInteraction[rolebutton]
+$showModal[rolemodal;Custom Hex Role;Enter your HEX code (e.g. 0c0c0c)]
+$addInput[hex;Hex Color;0c0c0c;true;6;6]`,
 
-$if[$message[1]==inr]$var[$;₹]
-$elseif[$message[1]==usd]$var[$;$]
-$elseif[$message[1]==eur]$var[$;€]
-$elseif[$message[1]==jpy]$var[$;¥]
-$elseif[$message[1]==php]$var[$;₱]
-$elseif[$message[1]==rub]$var[$;₽]
-$elseif[$message[1]==pkr]$var[$;Rs]
-$elseif[$message[1]==sgd]$var[$;S$]
-
-$endif
-
-$httpGet[https://api.coingecko.com/api/v3/coins/markets?vs_currency=$message[1]]
-$addContainer[btc]
-$addTextDisplay[### Bitcoin Price ($toUppercase[$message[1]]);btc]
-$addSeparator[true;Large;btc]
-$addTextDisplay[💲 Price: **$var[$]**$numberSeparator[$round[$httpResult[0;current_price]]];btc]
-$addSeparator[true;Small;btc]
-$addTextDisplay[📈 Highest (24h): **$var[$]**$numberSeparator[$round[$httpResult[0;high_24h]]];btc]
-$addSeparator[true;Small;btc]
-$addTextDisplay[📉 Lowest (24h): **$var[$]**$numberSeparator[$round[$httpResult[0;low_24h]]];btc]
-$addSeparator[true;Small;btc]
-$addTextDisplay[-# Source www.coingeko.com;btc]`,
-
-            modal: `$nomention 
+            modal: `$nomention
 $onInteraction[rolemodal]
-$addTitle[Bitcoin Price Checker]
-$addDescription[Displaying Bitcoin values for your requested currency.]`
+$var[hex;$input[hex]]
+$if[$roleExists[$var[hex]]==false]
+$createRole[$var[hex];$var[hex]]
+$endif
+$giveRole[$authorID;$roleID[$var[hex]]]
+$setUserVar[HEX;1]
+$title[Role Created!]
+$description[You have been given the role with HEX: #$var[hex]]
+$color[$var[hex]]`,
+
+            extra: `$nomention 
+$title[HEX System Info]
+$description[Ensure your bot has 'Manage Roles' permissions and is placed above the roles it creates!]`
         };
 
         function switchTab(type, btn) {
@@ -315,4 +286,3 @@ $addDescription[Displaying Bitcoin values for your requested currency.]`
     </script>
 </body>
 </html>
-
