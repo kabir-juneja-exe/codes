@@ -95,35 +95,116 @@
         }
         .overlay.active { display: block; }
 
-        /* --- CONTENT SECTION --- */
+        /* --- MAIN CONTAINER --- */
         .container {
             margin-top: 100px;
-            max-width: 900px; /* Adjusted for profile screenshot width */
             width: 95%;
+            max-width: 800px;
             text-align: center;
         }
 
         h1 { margin-bottom: 5px; font-size: 2.5rem; }
-        .description { color: #bbb; margin-bottom: 30px; font-size: 1.1rem; }
+        .description { color: #bbb; margin-bottom: 40px; font-size: 1.1rem; }
 
-        /* --- PROFILE IMAGE BOX --- */
-        .profile-container {
-            position: relative;
+        /* --- LIVE DISCORD COMPONENT --- */
+        .discord-card {
+            background-color: #111214;
             width: 100%;
-            max-width: 700px; /* Best fit for the screenshot aspect ratio */
+            max-width: 600px;
             margin: 0 auto;
-            border: 2px solid #ffffff;
-            border-radius: 15px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
-            background-color: #000;
+            text-align: left;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+            position: relative;
         }
 
-        .profile-img-custom {
+        .banner {
+            height: 120px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://cdn.discordapp.com/banners/1301883723247124521/a_b91b0a63867f80ab6995a61b45642af4.gif');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .profile-section {
+            padding: 16px;
+            position: relative;
+        }
+
+        .avatar-large-container {
+            position: absolute;
+            top: -45px;
+            left: 20px;
+        }
+
+        .avatar-large {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 6px solid #111214;
+            background-color: #111214;
+        }
+
+        .status-dot {
+            width: 22px;
+            height: 22px;
+            background-color: #23a55a;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            border: 4px solid #111214;
+        }
+
+        .profile-info {
+            margin-top: 50px;
+            background-color: #1a1b1e;
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .name-row { display: flex; align-items: center; gap: 8px; }
+        .name-row h2 { margin: 0; font-size: 1.5rem; color: #00f7ff; text-shadow: 0 0 10px rgba(0, 247, 255, 0.5); }
+        .pronouns { color: #b5bac1; font-size: 0.9rem; margin-top: 4px; }
+        .username-tag { color: #b5bac1; font-size: 1rem; margin-bottom: 12px; }
+
+        .badges { display: flex; gap: 6px; margin-bottom: 15px; }
+        .badge { width: 22px; height: 22px; }
+
+        .link-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #00a8fc;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .game-section {
+            margin-top: 20px;
+            background-color: #2b2d31;
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .game-icons { display: flex; gap: 8px; }
+        .game-icon { width: 30px; height: 30px; border-radius: 4px; }
+
+        .edit-btn {
             width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover; /* Ensures it fills the container neatly */
+            background-color: #4e5058;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         /* --- FOOTER SOCIALS --- */
@@ -132,59 +213,19 @@
             display: flex;
             gap: 35px;
             justify-content: center;
-            align-items: center;
         }
 
-        .social-icon {
-            color: #bbb;
-            font-size: 2.2rem;
-            text-decoration: none;
-            transition: 0.3s ease;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .social-icon:hover {
-            color: white;
-            transform: scale(1.1);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
+        .social-icon { color: #bbb; font-size: 2.2rem; transition: 0.3s; }
+        .social-icon:hover { color: white; transform: scale(1.1); }
         .tilt-icon { transform: rotate(-35deg); }
 
-        /* --- COPYRIGHT --- */
-        .copyright {
-            margin-top: 40px;
-            padding-bottom: 30px;
-            color: #bbb;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        #toast {
-            visibility: hidden;
-            min-width: 200px;
-            background-color: white;
-            color: black;
-            text-align: center;
-            border-radius: 6px;
-            padding: 12px;
-            position: fixed;
-            z-index: 2000;
-            bottom: 30px;
-            font-weight: bold;
-        }
-        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-
-        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+        .copyright { margin-top: 40px; color: #bbb; font-size: 0.9rem; padding-bottom: 30px; }
     </style>
 </head>
 <body>
 
     <div class="profile-header">
-        <img src="https://cdn.discordapp.com/avatars/1301883723247124521/4793f5066c0ee12d60df0414b57fe1ee.png?size=1024" alt="Avatar" class="avatar-small">
+        <img src="https://cdn.discordapp.com/avatars/1301883723247124521/4793f5066c0ee12d60df0414b57fe1ee.png?size=1024" class="avatar-small">
         <span class="username-top">Kabir.exe.</span>
     </div>
 
@@ -196,7 +237,7 @@
 
     <div class="sidebar" id="sidebar">
         <a href="index.html">Home</a>
-        <a href="codes.html">Other Codes</a>
+        <a href="codes.html">Codes</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
     </div>
@@ -204,45 +245,61 @@
     <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
     <div class="container">
-        <h1>Sha?dow</h1>
-        <p class="description">My name is Kabir I am a developer and designer.</p>
+        <h1>Hello I am Shadow</h1>
+        <p class="description">Developer and Designer</p>
 
-        <div class="profile-container">
-            <img src="https://cdn.discordapp.com/attachments/1424703458321367201/1476600471534829680/Screenshot_20260226_203214.jpg?ex=69a1b6da&is=69a0655a&hm=facfc48be2487224ebafa93844040fef06e7201efd7bf92c4b5b36b78d1a63f5&" class="profile-img-custom" alt="Kabir Discord Profile">
+        <div class="discord-card">
+            <div class="banner"></div>
+            <div class="profile-section">
+                <div class="avatar-large-container">
+                    <img src="https://cdn.discordapp.com/avatars/1301883723247124521/4793f5066c0ee12d60df0414b57fe1ee.png?size=1024" class="avatar-large">
+                    <div class="status-dot"></div>
+                </div>
+
+                <div class="profile-info">
+                    <div class="name-row">
+                        <h2>Shadow</h2>
+                        <span class="pronouns">He/Him</span>
+                    </div>
+                    <div class="username-tag">kabir.exe.</div>
+
+                    <div class="badges">
+                        <img src="https://raw.githubusercontent.com/mezotv/discord-badges/main/assets/hypesquad_bravery.svg" class="badge">
+                        <img src="https://raw.githubusercontent.com/mezotv/discord-badges/main/assets/nitro.svg" class="badge">
+                        <img src="https://raw.githubusercontent.com/mezotv/discord-badges/main/assets/boost1month.svg" class="badge">
+                    </div>
+
+                    <a href="https://guns.lol/kabirjuneja" target="_blank" class="link-row">
+                        <img src="https://guns.lol/favicon.ico" width="20" style="border-radius: 4px;"> guns.lol/kabirjuneja
+                    </a>
+
+                    <div class="game-section">
+                        <span>Game Collection</span>
+                        <div class="game-icons">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png" class="game-icon">
+                            <img src="https://play-lh.googleusercontent.com/vH_fMv7vS2WovS9m52UvS2_w5m1946wX2zS55" class="game-icon">
+                            <img src="https://play-lh.googleusercontent.com/8ddccS-mSvl9S6_K_P0I02F2o_86_0E" class="game-icon">
+                        </div>
+                    </div>
+
+                    <button class="edit-btn"><i class="fa-solid fa-pencil"></i> Edit Profile</button>
+                </div>
+            </div>
         </div>
 
         <div class="footer-socials">
-            <a href="https://discord.gg/void" target="_blank" class="social-icon">
-                <i class="fa-brands fa-discord"></i>
-            </a>
-            <a onclick="copyEmail()" class="social-icon">
-                <i class="fa-solid fa-envelope"></i>
-            </a>
-            <a href="https://guns.lol/kabirjuneja" target="_blank" class="social-icon">
-                <i class="fa-solid fa-gun tilt-icon"></i>
-            </a>
+            <a href="https://discord.gg/void" class="social-icon"><i class="fa-brands fa-discord"></i></a>
+            <a href="mailto:kabir0juneja@gmail.com" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://guns.lol/kabirjuneja" class="social-icon"><i class="fa-solid fa-gun tilt-icon"></i></a>
         </div>
 
-        <div class="copyright">
-            All Rights Reserved by Kabir Juneja
-        </div>
+        <div class="copyright">All Rights Reserved by Kabir Juneja</div>
     </div>
-
-    <div id="toast">Email Copied to Clipboard!</div>
 
     <script>
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
-        }
-
-        function copyEmail() {
-            const email = "kabir0juneja@gmail.com";
-            navigator.clipboard.writeText(email).then(() => {
-                const toast = document.getElementById("toast");
-                toast.className = "show";
-                setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
-            });
         }
     </script>
 </body>
