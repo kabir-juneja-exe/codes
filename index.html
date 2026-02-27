@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Shadow</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* General Page Styling */
         body {
             background-color: #2c2c2c;
             color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -103,26 +104,26 @@
             text-align: center;
         }
 
-        h1 { margin-bottom: 5px; font-size: 2.5rem; }
+        h1 { margin-bottom: 5px; font-size: 2.5rem; font-family: 'Orbitron', sans-serif; }
         .description { color: #bbb; margin-bottom: 40px; font-size: 1.1rem; }
 
-        /* --- LIVE DISCORD COMPONENT --- */
+        /* --- DISCORD COMPONENT --- */
         .discord-card {
             background-color: #111214;
             width: 100%;
-            max-width: 500px; /* Slimmer for the new look */
+            max-width: 450px; 
             margin: 0 auto;
             border-radius: 16px;
             overflow: hidden;
             text-align: left;
             border: 1px solid #ffffff;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
             position: relative;
         }
 
         .banner {
             height: 120px;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://cdn.discordapp.com/banners/1301883723247124521/a_b91b0a63867f80ab6995a61b45642af4.gif');
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://cdn.discordapp.com/banners/1301883723247124521/a_b91b0a63867f80ab6995a61b45642af4.gif');
             background-size: cover;
             background-position: center;
         }
@@ -165,25 +166,21 @@
         }
 
         .name-row { display: flex; align-items: center; gap: 8px; }
-        .name-row h2 { margin: 0; font-size: 1.5rem; color: #00f7ff; text-shadow: 0 0 10px rgba(0, 247, 255, 0.5); }
-        .pronouns { color: #b5bac1; font-size: 0.9rem; margin-top: 4px; }
-        .username-tag { color: #b5bac1; font-size: 1rem; margin-bottom: 12px; }
-
-        /* Updated Badges Section */
-        .badges { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
-        .badge { width: 24px; height: 24px; object-fit: contain; }
-
-        .link-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #00a8fc;
-            text-decoration: none;
-            font-size: 1.1rem;
-            margin-top: 10px;
-            padding: 8px 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
+        /* MODERN FONT FOR SHADOW */
+        .name-row h2 { 
+            margin: 0; 
+            font-size: 1.6rem; 
+            color: #ffffff; 
+            font-family: 'Orbitron', sans-serif; 
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
+        .pronouns { color: #b5bac1; font-size: 0.8rem; margin-top: 4px; background: #2b2d31; padding: 2px 6px; border-radius: 4px; }
+        .username-tag { color: #b5bac1; font-size: 1rem; margin-bottom: 12px; font-weight: 500; }
+
+        /* Badges Section */
+        .badges { display: flex; gap: 8px; flex-wrap: wrap; }
+        .badge { width: 24px; height: 24px; object-fit: contain; }
 
         /* --- FOOTER SOCIALS --- */
         .footer-socials {
@@ -236,22 +233,18 @@
 
                 <div class="profile-info">
                     <div class="name-row">
-                        <h2>Shadow</h2>
-                        <span class="pronouns">He/Him</span>
+                        <h2>SHADOW</h2>
+                        <span class="pronouns">HE/HIM</span>
                     </div>
                     <div class="username-tag">kabir.exe.</div>
 
                     <div class="badges">
-                        <img src="https://cdn.discordapp.com/attachments/1424703458321367201/1476871803602341928/2502-nitro-bronze-nodot-background.png?ex=69a2b38c&is=69a1620c&hm=ea668a622d11316846a0be626a73bfc14544e188762f48c673286dfcb969839f&" class="badge">
-                        <img src="https://cdn.discordapp.com/attachments/1424703458321367201/1476871645238136964/5946-discord-balance.png?ex=69a2b367&is=69a161e7&hm=e943e4245b98183cd3c233b776af2ad897da84c35fa6b6d694cc9e7ee8259689&" class="badge">
-                        <img src="https://cdn.discordapp.com/attachments/1424703458321367201/1476872208180580402/4390-evolving-badge-nitro-1-months.png?ex=69a2b3ed&is=69a1626d&hm=2c4477e190aba26b2cafeea05cbf5dee628bfce7ea8ec40005e29bfa87279f0d&" class="badge">
-                        <img src="https://cdn.discordapp.com/attachments/1424703458321367201/1476871644948594729/92929-questbadge.png?ex=69a2b367&is=69a161e7&hm=475266361ee083d2c09af46aed1593f1861aee175f5c623871776addcbe4903a&" class="badge">
-                        <img src="https://cdn.discordapp.com/attachments/1424703458321367201/1476871907268624414/41827-orbs.png?ex=69a2b3a5&is=69a16225&hm=73a0870ec6a0bf8a18113257ada546880525fba0f10c77bed0f6a875a9497825&" class="badge">
+                        <img src="https://cdn.discordapp.com/attachments/1424703458321367201/1476871803602341928/2502-nitro-bronze-nodot-background.png?ex=69a2b38c&is=69a1620c&hm=ea668a622d11316846a0be626a73bfc14544e188762f48c673286dfcb969839f&" class="badge" title="Nitro">
+                        <img src="https://cdn.discordapp.com/attachments/1424703458321367201/1476871645238136964/5946-discord-balance.png?ex=69a2b367&is=69a161e7&hm=e943e4245b98183cd3c233b776af2ad897da84c35fa6b6d694cc9e7ee8259689&" class="badge" title="Hypesquad">
+                        <img src="https://cdn.discordapp.com/attachments/1424703458321367201/1476872208180580402/4390-evolving-badge-nitro-1-months.png?ex=69a2b3ed&is=69a1626d&hm=2c4477e190aba26b2cafeea05cbf5dee628bfce7ea8ec40005e29bfa87279f0d&" class="badge" title="Boost">
+                        <img src="https://cdn.discordapp.com/attachments/1424703458321367201/1476871644948594729/92929-questbadge.png?ex=69a2b367&is=69a161e7&hm=475266361ee083d2c09af46aed1593f1861aee175f5c623871776addcbe4903a&" class="badge" title="Quest">
+                        <img src="https://cdn.discordapp.com/attachments/1424703458321367201/1476871907268624414/41827-orbs.png?ex=69a2b3a5&is=69a16225&hm=73a0870ec6a0bf8a18113257ada546880525fba0f10c77bed0f6a875a9497825&" class="badge" title="Orb">
                     </div>
-
-                    <a href="https://guns.lol/kabirjuneja" target="_blank" class="link-row">
-                        <img src="https://guns.lol/favicon.ico" width="20" style="border-radius: 4px;"> guns.lol/kabirjuneja
-                    </a>
                 </div>
             </div>
         </div>
